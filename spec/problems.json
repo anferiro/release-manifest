@@ -1,0 +1,15 @@
+{
+    "problems": {
+        "type": "object",
+        "required": ["issues"],
+        "properties": {
+            "issues": {
+                "type": "array",
+                "description": "List of issues belonging to this epic.",
+                "items": {
+                    "$ref": "./issue.json"
+                }
+            }
+        }
+    }
+}

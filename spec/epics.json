@@ -1,0 +1,28 @@
+{
+    "epic": {
+        "type": "object",
+        "required": ["epic_key", "short_desc", "url", "issues"],
+        "properties": {
+            "epic_key": {
+                "type": "string",
+                "description": "The unique identifier for the epic (e.g., JIRA epic key)."
+            },
+            "short_desc": {
+                "type": "string",
+                "description": "A short description of the epic."
+            },
+            "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "The URL of the epic in the issue tracking system."
+            },
+            "issues": {
+                "type": "array",
+                "description": "List of issues belonging to this epic.",
+                "items": {
+                    "$ref": "./issue.json"
+                }
+            }
+        }
+    }
+}

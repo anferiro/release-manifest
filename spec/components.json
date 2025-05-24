@@ -1,0 +1,74 @@
+{
+    "component": {
+        "type": "object",
+        "required": ["name", "version", "description", "repository", "type"],
+        "properties": {
+            "name": {
+                "type": "string",
+                "description": "The name of the component."
+            },
+            "version": {
+                "type": "string",
+                "description": "The version of the component.",
+                "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
+            },
+            "description": {
+                "type": "string",
+                "description": "A brief description of the component."
+            },
+            "repository": {
+                "type": "string",
+                "format": "uri",
+                "description": "The URL of the repository where the component is hosted."
+            },
+            "type": {
+                "type": "string",
+                "enum": ["library", "microservice", "service","tool", "framework", "plugin"],
+                "description": "The type of the component, indicating its role in the system. Valid values are: 'library' (reusable code), 'service' (backend service), 'tool' (utility or application), 'framework' (structure for applications), and 'plugin' (extension to existing software)."
+            },
+            "language": {
+                "type": "string",
+                "description": "The programming language used to develop the component.",
+                "enum": ["JavaScript", "TypeScript", "Python", "Java", "C#", "Go", "Ruby", "PHP", "Rust", "Kotlin"]
+            },
+            "issues": {
+                "type": "array",
+                "description": "A list of features or functionalities provided by the component.",
+                "items": {
+                    "$ref": "./issue.json"
+                }
+            },
+            "build":{
+                "type": "object",
+                "properties": {
+                    "method": {
+                        "type": "string",
+                        "description": "The method used to build the component.",
+                        "enum": ["source", "binary", "docker"]
+                    },
+                    "context": {
+                        "type": "string",
+                        "description": "The context or directory where the build process is executed."
+                    }
+                },
+                "description": "Build configuration for the component."
+            },
+            "deploy":{
+                "type": "object",
+                "properties": {
+                    "method": {
+                        "type": "string",
+                        "description": "The method used to deploy the component.",
+                        "enum": ["docker", "kubernetes", "serverless", "manual"]
+                    },
+                    "target": {
+                        "type": "string",
+                        "description": "The target environment or platform for deployment."
+                    }
+                },
+                "description": "Deployment configuration for the component."
+
+            }
+        }
+    }
+}

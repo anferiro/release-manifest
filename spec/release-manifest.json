@@ -1,0 +1,58 @@
+{   
+"author": "anferiro",
+"title": "Product Release Manifest",
+"required": ["company","product", "version", "release_date", "epics"],
+"properties": {
+    "company": {
+      "type": "string",
+      "description": "The name of the company releasing the product."
+    },
+    "product": {
+      "type": "string",
+      "description": "The name of the product being released."
+    },
+    "version": {
+      "type": "string",
+      "description": "The version number of the product release.",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
+    },
+    "release_date": {
+      "type": "string",
+      "format": "date",
+      "description": "The date when the product is released."
+    },
+    "release_type": {
+      "type": "string",
+      "enum": ["snapshot", "beta", "alpha", "candidate", "production"],
+      "description": "The type of release, indicating the significance and stability of changes. Valid values are: 'snapshot' (early, unstable build), 'alpha' (initial testing phase), 'beta' (feature-complete but may contain bugs), 'candidate' (potential final release for last checks), and 'production' (stable, public release)."
+    },
+    "eppics": {
+      "type": "array",
+      "description": "A list of epics included in this release.",
+      "items": {
+        "$ref": "./epic.json"
+      }
+    },
+    "incidents": {
+      "type": "array",
+      "description": "A list of incidents included in this release.",
+      "items": {
+        "$ref": "./incident.json"
+      }
+    },
+    "problems": {
+      "type": "array",
+      "description": "A list of problems included in this release.",
+      "items": {
+        "$ref": "./problem.json"
+      }
+    },
+    "components": {
+      "type": "array",
+      "description": "A list of components included in this release.",
+      "items": {
+        "$ref": "./component.json"
+      }
+    }
+} 
+}

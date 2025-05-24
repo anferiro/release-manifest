@@ -1,0 +1,126 @@
+company: TechInnovate
+product: Customer Portal
+version: 2.4.0
+release_date: 2025-05-24
+release_type: production
+
+# Epic section based on the epics.json schema
+epics:
+  - epic:
+    epic_key: EPIC-001
+    short_desc: "Authentication Enhancement Project"
+    url: "https://jira.techinnovate.com/browse/EPIC-001"
+    issues:
+      - issue:
+        issue_key: STORY-456
+        issue_type: story
+        short_desc: "Allow users to reset password via email"
+        url: "https://jira.techinnovate.com/browse/STORY-456"
+      - issue:
+        issue_key: BUG-789
+        issue_type: bug
+        short_desc: "Fix session timeout handling"
+        url: "https://jira.techinnovate.com/browse/BUG-789"
+  
+  - epic:
+    epic_key: EPIC-002
+    short_desc: "Security Improvements"
+    url: "https://jira.techinnovate.com/browse/EPIC-002"
+    issues:
+      - issue:
+        issue_key: HOT-101
+        issue_type: hotfix
+        short_desc: "Urgent fix for security vulnerability in API"
+        url: "https://jira.techinnovate.com/browse/HOT-101"
+
+# Incidents section based on the incidents.json schema
+incidents:
+  - issue:
+    issue_key: INC-001
+    issue_type: incident
+    short_desc: "System outage during peak hours"
+    url: "https://jira.techinnovate.com/browse/INC-001"
+
+# Problems section based on the problems.json schema
+problems:
+  - issue:
+    issue_key: PROB-001
+    issue_type: problem
+    short_desc: "Recurring timeouts in payment processing"
+    url: "https://jira.techinnovate.com/browse/PROB-001"
+
+components:
+  - component:
+    name: authentication-service
+    version: 1.3.0
+    description: "Handles user authentication and authorization"
+    repository: "https://github.com/techinnovate/auth-service"
+    type: microservice
+    language: Java
+    issues:
+      - issue:
+        issue_key: FEAT-123
+        issue_type: feature
+        short_desc: "Implement single sign-on with OAuth2"
+        url: "https://jira.techinnovate.com/browse/FEAT-123"
+    build:
+      method: docker
+      context: "./auth-service"
+    deploy:
+      method: kubernetes
+      target: "prod-cluster"
+
+  - component:
+    name: user-profile-service
+    version: 2.1.5
+    description: "Manages user profiles and settings"
+    repository: "https://github.com/techinnovate/user-profile"
+    type: microservice
+    language: Java
+    issues:
+      - issue:
+        issue_key: STORY-456
+        issue_type: story
+        short_desc: "Allow users to reset password via email"
+        url: "https://jira.techinnovate.com/browse/STORY-456"
+      - issue:
+        issue_key: BUG-789
+        issue_type: bug
+        short_desc: "Fix session timeout handling"
+        url: "https://jira.techinnovate.com/browse/BUG-789"
+    build:
+      method: docker
+      context: "./user-service"
+    deploy:
+      method: kubernetes
+      target: "prod-cluster"
+
+  - component:
+    name: api-gateway
+    version: 0.9.8
+    description: "API gateway for service routing and rate limiting"
+    repository: "https://github.com/techinnovate/api-gateway"
+    type: microservice
+    language: Java
+    issues:
+      - issue:
+        issue_key: HOT-101
+        issue_type: hotfix
+        short_desc: "Urgent fix for security vulnerability in API"
+        url: "https://jira.techinnovate.com/browse/HOT-101"
+      - issue:
+        issue_key: INC-001
+        issue_type: incident
+        short_desc: "System outage during peak hours"
+        url: "https://jira.techinnovate.com/browse/INC-001"
+      - issue:
+        issue_key: PROB-001
+        issue_type: problem
+        short_desc: "Recurring timeouts in payment processing"
+        url: "https://jira.techinnovate.com/browse/PROB-001"
+    build:
+      method: docker
+      context: "./gateway"
+    deploy:
+      method: kubernetes
+      target: "prod-cluster"

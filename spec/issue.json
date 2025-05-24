@@ -1,0 +1,23 @@
+
+{
+    "issue": {
+        "type": "object",
+        "required": ["issue_key", "short_desc", "issue_type"],
+        "properties": {
+            "issue_key": {
+                "type": "string",
+                "description": "The issue key associated with this feature (e.g., JIRA ticket)."
+            },
+            "issue_type": {
+                "type": "string",
+                "enum": ["story", "bug", "hotfix", "tech_deb","task", "incident", "problem"],
+                "description": "The type of issue, indicating its nature. Valid values are: 'bug' (defect or error), 'task' (work item), 'story' (user requirement), and 'feature' (new functionality)."
+            },
+            "short_desc": {
+                "type": "string",
+                "description": "A short description or subject of the feature."
+            }
+        }
+    }
+}
+
